@@ -1,7 +1,7 @@
 # a. Alpine base image (pinned version)
 FROM alpine:3.20
 
-LABEL maintainer="YOUR NAME" \
+LABEL maintainer="Giovana Assis" \
       description="Python calculator configured with environment variables"
 
 # Alpine does not include Python: install it from the Alpine package repository
