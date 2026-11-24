@@ -1,0 +1,19 @@
+# OPTIONAL variant: the image clones the calculator directly from its Git repository
+# Build with:
+#   docker build -f Dockerfile.git --build-arg REPO_URL=https://github.com/<user>/docker-calculator.git -t calculator:1.0-git .
+FROM alpine:3.20
+
+ARG REPO_URL=https://github.com/YOUR_USER/docker-calculator.git
+
+RUN apk add --no-cache python3 git \
+    && git clone --depth 1 ${REPO_URL} /app \
+    && apk del git
+
+ENV APP_NAME="Docker Calculator (git)" \
+    APP_AUTHOR="Giovana Assis" \
+    CALC_OPERATION="add" \
+    CALC_NUM1="10" \
+    CALC_NUM2="5"
+
+WORKDIR /app
+CMD ["python3", "calculator.py"]
