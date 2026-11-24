@@ -3,7 +3,7 @@
 #   docker build -f Dockerfile.git --build-arg REPO_URL=https://github.com/<user>/docker-calculator.git -t calculator:1.0-git .
 FROM alpine:3.20
 
-ARG REPO_URL=https://github.com/YOUR_USER/docker-calculator.git
+ARG REPO_URL=https://github.com/GiHyperia/docker-calculator.git
 
 RUN apk add --no-cache python3 git \
     && git clone --depth 1 ${REPO_URL} /app \
